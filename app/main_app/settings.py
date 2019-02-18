@@ -126,6 +126,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+CELERY_BROKER_URL = f'redis://redis:6379'
+
+
 # Change Settings for Prod
 if ENVIRONMENT == 'prod':
     DEBUG = False
