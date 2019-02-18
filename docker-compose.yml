@@ -8,4 +8,17 @@ services:
       - 80:8000
     volumes:
       - ./app:/app
+#    links: 
+#      - redis
+#  django-celery-worker:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    volumes:
+#      - ./app:/app
+#    command: celery -A main_app worker -l info
+#    links: 
+#      - redis
+#  redis:
+#    image: redis:latest
 
