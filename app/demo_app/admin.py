@@ -17,9 +17,9 @@ class MessageAdmin(admin.ModelAdmin):
 
 # Admin for Image Attachments
 class ImageAttachmentAdmin(admin.ModelAdmin):
-    list_display = ['s3_url', 'owner', 'message', 'active', 'modified_date', 'created_date']
+    list_display = ['url', 'owner', 'message', 'active', 'modified_date', 'created_date']
     list_select_related = ('owner', 'message')
-    search_fields = ['s3_url', 'owner__username']
+    search_fields = ['url', 'owner__username']
     readonly_fields = ('created_date', 'modified_date')
     ordering = ('created_date', )
     list_per_page = 30

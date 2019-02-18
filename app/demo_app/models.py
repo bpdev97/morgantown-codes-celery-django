@@ -30,7 +30,7 @@ class ImageAttachment(models.Model):
     """
     S3 URL For Image attached to a Message
     """
-    s3_url = models.URLField(blank=False)
+    url = models.URLField(blank=False)
     message = models.ForeignKey(Message, models.DO_NOTHING, related_name='image_attachment', null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images_owned')
     active = models.BooleanField(default=True)
@@ -38,7 +38,7 @@ class ImageAttachment(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.s3_url
+        return self.url
 
     class Meta:
         managed = True
