@@ -1,10 +1,6 @@
 # Demo App View
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
 from django.contrib.auth.models import User
-from rest_framework import generics, permissions, viewsets
+from rest_framework import permissions, viewsets
 
 from .models import ImageAttachment, Message
 from .serializers import ImageAttachmentSerializer, MessageSerializer, UserSerializer

@@ -15,6 +15,9 @@ class Message(models.Model):
     modified_date = models.DateTimeField(auto_now_add=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.author}: {self.subject}'
+
     class Meta:
         managed = True
         ordering = ('created_date', )
@@ -33,6 +36,9 @@ class ImageAttachment(models.Model):
     active = models.BooleanField(default=True)
     modified_date = models.DateTimeField(auto_now_add=True)
     created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.s3_url
 
     class Meta:
         managed = True
