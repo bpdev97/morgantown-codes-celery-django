@@ -2,7 +2,7 @@
 #   This file governs what is displayed and what is actionable on the Django Admin Dashboard
 
 from django.contrib import admin
-from .models import Message, ImageAttachment
+from .models import Message, Image
 
 
 # Admin for Messages
@@ -27,4 +27,4 @@ class ImageAttachmentAdmin(admin.ModelAdmin):
 
 # Register Model to Admins
 admin.site.register(Message, MessageAdmin)
-admin.site.register(ImageAttachment, ImageAttachmentAdmin)
+admin.site.register(Image, ImageAttachmentAdmin)

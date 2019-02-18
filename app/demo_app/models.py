@@ -16,7 +16,7 @@ class Message(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.author}: {self.subject}'
+        return self.subject
 
     class Meta:
         managed = True
@@ -26,7 +26,7 @@ class Message(models.Model):
         verbose_name_plural = 'User Messages'
 
 
-class ImageAttachment(models.Model):
+class Image(models.Model):
     """
     S3 URL For Image attached to a Message
     """
@@ -42,7 +42,7 @@ class ImageAttachment(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'image_attachment'
+        db_table = 'image'
         verbose_name = 'Image'
         verbose_name_plural = 'Image Attachments'
 

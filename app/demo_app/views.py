@@ -2,8 +2,8 @@
 from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 
-from .models import ImageAttachment, Message
-from .serializers import ImageAttachmentSerializer, MessageSerializer, UserSerializer
+from .models import Image, Message
+from .serializers import ImageSerializer, MessageSerializer, UserSerializer
 
 
 class MessageViewSet(viewsets.ModelViewSet):
@@ -22,8 +22,8 @@ class ImageAttachmentViewSet(viewsets.ModelViewSet):
     """
     Provides List, Detail, Retrieve, Create, Update, Delete for Model
     """
-    queryset = ImageAttachment.objects.all()
-    serializer_class = ImageAttachmentSerializer
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):

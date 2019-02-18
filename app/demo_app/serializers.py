@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Message, ImageAttachment
+from .models import Message, Image
 
 
 class MessageSerializer(serializers.HyperlinkedModelSerializer):
@@ -14,10 +14,10 @@ class MessageSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class ImageAttachmentSerializer(serializers.ModelSerializer):
+class ImageSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = ImageAttachment
+        model = Image
         read_only_fields = ('owner',)
         fields = '__all__'
 
