@@ -17,6 +17,7 @@ class Message(models.Model):
 
     class Meta:
         managed = True
+        ordering = ('created_date', )
         db_table = 'message'
         verbose_name = 'User Message'
         verbose_name_plural = 'User Messages'

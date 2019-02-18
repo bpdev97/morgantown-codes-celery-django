@@ -8,7 +8,6 @@ from .models import Message, ImageAttachment
 class MessageSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     image_attachment = serializers.HyperlinkedRelatedField(many=True, read_only=True)
-    highlight = serializers.HyperlinkedIdentityField(view_name='snippet-highlight', format='html')
 
     class Meta:
         model = Message
