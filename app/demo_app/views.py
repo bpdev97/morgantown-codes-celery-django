@@ -1,6 +1,10 @@
 # Demo App View
 from django.contrib.auth.models import User
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from demo_app.tasks import count_to_ten
 
 from .models import Image, Message
 from .serializers import ImageSerializer, MessageSerializer, UserSerializer
@@ -38,3 +42,12 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
+
+class CountToTen(APIView):
+    """
+    Dispatches a given number of count to ten task(s) on a remote server via celery.
+    """
+    def get(self, request, number_of_tasks):
+        for _ in range(number_of_tasks):
+            count_to_ten.delay()
+        return Response(f'{number_of_tasks} tasks coming right up!', status=status.HTTP_200_OK)

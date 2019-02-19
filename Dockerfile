@@ -15,8 +15,8 @@ RUN apk update && apk add bash \
         python-dev \
         libxml2-dev \
         libxslt-dev \
-	libffi \
-	libffi-dev \
+	    libffi \
+	    libffi-dev \
         zlib-dev \
         py-pip
 
