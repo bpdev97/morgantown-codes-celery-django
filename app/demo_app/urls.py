@@ -16,4 +16,5 @@ router.register(r'users', views.UserViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     path('celery/count_to_ten/<int:number_of_tasks>', views.CountToTen.as_view()),
+    path('celery/scrape_image', views.ScrapeImage.as_view())
 ]

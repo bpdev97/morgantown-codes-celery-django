@@ -4,7 +4,7 @@ from rest_framework import permissions, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from demo_app.tasks import count_to_ten
+from demo_app.tasks import count_to_ten, scrape_image
 
 from .models import Image, Message
 from .serializers import ImageSerializer, MessageSerializer, UserSerializer
@@ -51,3 +51,13 @@ class CountToTen(APIView):
         for _ in range(number_of_tasks):
             count_to_ten.delay()
         return Response(f'{number_of_tasks} tasks coming right up!', status=status.HTTP_200_OK)
+
+
+class ScrapeImage(APIView):
+    """
+    Dispatches a task for a given image url.
+    """
+    def get(self, request):
+        image_url = request.GET.get('image_url')
+        scrape_image.delay(user=request.user.pk, image_url=image_url)
+        return Response(f'Dispatched a task to grab the image at {image_url}.')
