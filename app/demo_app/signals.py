@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 
-from .models import Message
+from .models import Message, Image
 from .tasks import send_email
 
 
@@ -18,8 +18,14 @@ def send_message(sender, instance, **kwargs):
     to_email = instance.to_user.email
     from_email = instance.author.email
 
+    # Find and add to the body any image links
+    images = Image.objects.filter(message=instance)
+    urls = ""
+    for img in images:
+        print(img.url)
+        urls = urls + f'  {img.url}  '
     print("Sending email out to customer.")
-    send_email.delay(subject, message, from_email=from_email, to_email=to_email)
+    send_email.delay(subject, message + urls, from_email=from_email, to_email=to_email)
 
 
 # Attach the send_message signal to the Message Model.
