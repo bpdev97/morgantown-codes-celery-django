@@ -16,9 +16,10 @@ def send_message(sender, instance, **kwargs):
     subject = instance.subject
     message = instance.body
     to_email = instance.to_user.email
+    from_email = instance.author.email
 
     print("Sending email out to customer.")
-    send_email.delay(subject, message, from_email='support@autoipacket.com', to_email=to_email)
+    send_email.delay(subject, message, from_email=from_email, to_email=to_email)
 
 
 # Attach the send_message signal to the Message Model.
