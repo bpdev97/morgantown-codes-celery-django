@@ -22,7 +22,7 @@ def send_message(sender, instance, **kwargs):
     images = Image.objects.filter(message=instance)
     urls = ""
     for img in images:
-        print(img.url)
+        print("Image URL: ", img.url)
         urls = urls + f'  {img.url}  '
     print("Sending email out to customer.")
     send_email.delay(subject, message + urls, from_email=from_email, to_email=to_email)
