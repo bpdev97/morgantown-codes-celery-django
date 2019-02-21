@@ -129,6 +129,13 @@ STATIC_URL = '/static/'
 
 CELERY_BROKER_URL = f'redis://redis:6379'
 
+# Email Settings
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_USE_TLS = True
+
 
 # Change Settings for Prod
 if ENVIRONMENT == 'prod':

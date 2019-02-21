@@ -45,4 +45,3 @@ class Image(models.Model):
         db_table = 'image'
         verbose_name = 'Image'
         verbose_name_plural = 'Image Attachments'
-

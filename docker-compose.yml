@@ -9,6 +9,9 @@ services:
     volumes:
       - ./app:/app
     command: python3 manage.py runserver 0.0.0.0:8000
+    environment:
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
     links: 
       - redis
   django-celery-worker:
@@ -18,6 +21,9 @@ services:
     volumes:
       - ./app:/app
     command: celery -A main_app worker -l info --concurrency=1
+    environment:
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
     links: 
       - redis
   redis:
